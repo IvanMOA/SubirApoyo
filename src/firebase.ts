@@ -14,3 +14,5 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 export const auth = firebaseApp.auth();
 export const firestore = firebaseApp.firestore();
 export const storage = firebaseApp.storage();
+
+export const photosRef = storage.ref('photos')
