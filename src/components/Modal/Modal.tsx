@@ -24,9 +24,9 @@ export const Modal: React.FC = () => {
       style={ { zIndex: modalIsOn ? 50 : -50}}
       className={`${
         modalIsOn ? "opacity-100 bg-greyBlack30p mt-0" : "opacity-0  mt-4"
-      } transition-all duration-150 absolute w-screen h-screen flex justify-center items-center`}
+      } transition-all duration-150 absolute w-full h-screen flex justify-center items-center`}
     >
-      <div style={ { opacity : '100% !important'}} className="bg-white rounded-md overflow-hidden">{child}</div> 
+      <div className="bg-white rounded-md overflow-hidden">{child}</div> 
     </div>
   );
 };
