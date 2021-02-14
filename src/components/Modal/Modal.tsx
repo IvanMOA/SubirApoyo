@@ -21,7 +21,7 @@ export const Modal: React.FC = () => {
           child: currState.child,
         }))
       }
-      style={ { zIndex: modalIsOn ? 50 : -50}}
+      style={ { zIndex: modalIsOn ? 50 : -50, height: 'calc(100vh + 1px)'}}
       className={`${
         modalIsOn ? "opacity-100 bg-greyBlack30p mt-0" : "opacity-0  mt-4"
       } transition-all duration-150 absolute w-full h-screen flex justify-center items-center`}
