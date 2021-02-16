@@ -1,7 +1,7 @@
 import React from "react";
 import {
   RecoilRoot,
-  atom,
+  atom, 
   useRecoilState,
   selector,
   useRecoilValue,
@@ -10,7 +10,20 @@ import { PhotoDropzone } from "./components/Dropzone/Dropzone";
 import { Modal, ModalState } from "./components/Modal/Modal";
 import { ErrorModalContent } from "./components/Modal/ErrorModalContent";
 import { Home } from "./Pages/Home";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, withRouter } from "react-router-dom";
+import { Location } from 'history'
+import { Start } from "./Pages/Start";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+
+
+const MainAnimatedSwitch = withRouter(( { location} ) => {
+  return  <TransitionGroup><CSSTransition key={location.key}  timeout={500} classNames="slidevertical">
+        <Switch location={ location }>
+          <Route exact path="/" render={() => <Start />} />
+          <Route exact path="/inicio" render={() => <Home />} />
+        </Switch>
+      </CSSTransition></TransitionGroup>
+})
 
 const App: React.FC = () => {
   const [{ modalIsOn, child }, setModalState] = useRecoilState(ModalState);
@@ -18,9 +31,7 @@ const App: React.FC = () => {
     <div>
       <Modal />
       <Router>
-        <Switch>
-          <Route exact path="/" render={() => <Home />} />
-        </Switch>
+    <MainAnimatedSwitch/>
       </Router>
     </div>
   );

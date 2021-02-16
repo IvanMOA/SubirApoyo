@@ -1,0 +1,67 @@
+.fade-enter {
+    opacity: 0;
+}
+
+.fade-enter-active{
+    opacity: 1;
+    transition: opacity 3s;
+}
+
+.fade-exit{
+    opacity: 1;
+}
+
+.fade-exit-active{
+    opacity: 0;
+    transition: opacity 3s;
+}
+ 
+.slidevertical-enter,
+.slidevertical-exit {
+  transition: transform 500ms ease-out;
+}
+
+.slidevertical-enter {
+  transform: translateY(100%);
+}
+
+.slidevertical-enter.slidevertical-enter-active {
+  transform: translateY(0%);
+}
+
+.slidevertical-exit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(0%);
+}
+
+.slidevertical-exit-active {
+  transform: translateY(-100%);
+}
+
+.slidehorizontal-enter,
+.slidehorizontal-exit {
+  transition: transform 1000ms ease-out;
+}
+
+.slidehorizontal-enter {
+  transform: translateX(100%);
+}
+
+.slidehorizontal-enter.slidehorizontal-enter-active {
+  transform: translateX(0%);
+}
+
+.slidehorizontal-exit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateX(0%);
+}
+
+.slidehorizontal-exit-active {
+  transform: translateX(-100%);
+}
