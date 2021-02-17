@@ -1,7 +1,6 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import { ModalState } from "../Modal/Modal";
-import { Photo  as IPhoto} from './UploadPhotos'
 
 type PhotoProps = {
     src : string
