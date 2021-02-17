@@ -3,7 +3,6 @@ import {  useDropzone } from "react-dropzone"
 import { useRecoilState } from 'recoil'
 import { ErrorModalContent } from "../Modal/ErrorModalContent"
 import { ModalState } from "../Modal/Modal"
-import { Photo, PhotosState } from '../UploadPhotos/UploadPhotos'
 import { toBase64 } from '../../utilities/toBase64'
 
 let imageReg = /[\/.](gif|jpg|jpeg|tiff|png)$/i;
