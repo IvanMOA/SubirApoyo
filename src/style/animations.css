@@ -4,16 +4,17 @@
 
 .fade-enter-active{
     opacity: 1;
-    transition: opacity 3s;
+    transition: opacity 500ms;
 }
 
 .fade-exit{
     opacity: 1;
+    position: absolute;
 }
 
 .fade-exit-active{
     opacity: 0;
-    transition: opacity 3s;
+    transition: opacity 500ms;
 }
  
 .slidevertical-enter,
@@ -34,7 +35,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  transform: translateY(0%);
+  transform: translateY(0%); 
 }
 
 .slidevertical-exit-active {
@@ -43,11 +44,12 @@
 
 .slidehorizontal-enter,
 .slidehorizontal-exit {
-  transition: transform 1000ms ease-out;
+  transition: all 0.1s ease-out;
 }
 
 .slidehorizontal-enter {
   transform: translateX(100%);
+  opacity: 1;
 }
 
 .slidehorizontal-enter.slidehorizontal-enter-active {
@@ -56,12 +58,19 @@
 
 .slidehorizontal-exit {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 20px;
   transform: translateX(0%);
 }
 
 .slidehorizontal-exit-active {
-  transform: translateX(-100%);
+  transform: translateX(-150%);
+  opacity: 0;
+}
+
+.home-router-container > *{  
+  /* background-color: red; */
+  /* display: flex; 
+  justify-content:  center;
+  align-items: center; */
+  /* height: 100%; */
 }
