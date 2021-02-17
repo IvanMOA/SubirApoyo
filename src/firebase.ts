@@ -1,4 +1,6 @@
+import { Reference } from "@firebase/storage-types";
 import firebase from "firebase";
+import { Ref } from "react";
 
 let firebaseConfig = {
   apiKey: "AIzaSyDhuTQ-hqA9WJ7Y9uZYlxcDX4FNw6iJ-iI",
@@ -15,4 +17,4 @@ export const auth = firebaseApp.auth();
 export const firestore = firebaseApp.firestore();
 export const storage = firebaseApp.storage();
 
-export const photosRef = storage.ref('photos')
+export const photosRef = storage.ref('photos') as unknown as Reference
