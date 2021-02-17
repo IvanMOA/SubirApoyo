@@ -1,8 +1,6 @@
-import React, { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
 import uanlImg from "../assets/uanl.jpg";
 import '../style/animations.css'
-import { CSSTransition } from 'react-transition-group'
 
 
 export const Start = () => {
@@ -20,7 +18,7 @@ export const Start = () => {
           Ingresa para apoyar 
         </h1>
         <Link
-          to="/inicio"
+          to="/inicio/credenciales"
           className="bg-uanlYellow text-2xl xl:text-3xl text-center rounded-2xl px-16 py-4"
         >
           Ingresar
