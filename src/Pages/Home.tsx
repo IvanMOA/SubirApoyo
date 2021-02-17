@@ -1,20 +1,43 @@
 import React from "react";
-import { Navbar } from '../components/Navbar/Navbar'
-import { contentPadding } from '../theme/theme'
-import { PhotoDropzone } from '../components/Dropzone/Dropzone'
-import { UploadPhotos } from "../components/UploadPhotos/UploadPhotos";
+import { Navbar } from "../components/Navbar/Navbar";
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  useRouteMatch,
+  withRouter,
+} from "react-router-dom";
+import { LoginEmplDepe } from "../components/LoginEmplDepe/LoginEmplDepe";
+import { UploadDocuments } from "../components/UploadDocuments/UploadDocuments";
+import { PrivateRoute } from "../components/CustomRoutes/PrivateRoute";
 
-export const Home : React.FC = () => {
-    return <div>
-        <Navbar  />
-        <div className={`${contentPadding} mt-6`}>
-            <h1> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, molestiae. Dolor perferendis ipsum inventore, saepe facilis, tempore autem officia libero placeat quis, iste qui. Cum fugit consequuntur libero. Doloremque vitae iste sunt nobis sed ea non, repellat, maiores ipsum odit voluptates voluptatem tenetur maxime, dolor inventore quaerat laudantium et nam? </h1>
-            <div className="my-8">
-                <PhotoDropzone />
-            </div>
-            <div>
-                <UploadPhotos />
-            </div>
+const HomeAnimatedSwitch = withRouter(({ location, history }) => {
+  console.log("From Second router");
+  const { url } = useRouteMatch();
+
+  return (
+    <Switch location={location}>
+      <Route
+        exact
+        path={`/inicio/credenciales`}
+        render={() => <LoginEmplDepe />}
+      />
+      <PrivateRoute path="/inicio/fotos" Component={ UploadDocuments } exact={true} />
+    </Switch>
+  );
+});
+
+export const Home: React.FC = () => {
+  return (
+    <div className="h-full">
+      <div className="bg-gray-50 h-screen flex flex-col justify-between align-center">
+        <Navbar />
+        <div className="home-router-container flex flex-col align-center justify-center h-full w-full">
+          <BrowserRouter>
+            <HomeAnimatedSwitch />
+          </BrowserRouter>
         </div>
+      </div>
     </div>
-}
+  );
+};
