@@ -24,7 +24,6 @@ export const UploadGafette = () => {
   };
   useEffect(() => {
     const doAsync = async () => {
-      debugger;
       if (photoURL) {
         try {
           await updateGafettePhotoURL(employee.employeeNumber, photoURL);

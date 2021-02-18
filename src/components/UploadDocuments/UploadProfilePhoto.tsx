@@ -43,7 +43,6 @@ export const UploadProfilePhoto = () => {
   };
   useEffect(() => {
     const doAsync = async () => {
-      debugger;
       if (photoURL) {
         try {
           await updatePhotoURL(employee.employeeNumber, photoURL);
