@@ -5,7 +5,7 @@ import { ErrorModalContent } from "../Modal/ErrorModalContent";
 import { ModalState } from "../Modal/Modal";
 import { toBase64 } from "../../utilities/toBase64";
 
-let imageReg = /[\/.](gif|jpg|jpeg|tiff|png)$/i;
+let imageReg = /[\/.](gif|jpg|jpeg|tiff|png)$/i; 
 const isPhoto = (file: File) =>
   file.name.match(imageReg) === null ? false : true;
 

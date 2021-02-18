@@ -26,7 +26,7 @@ export const UploadGafette = () => {
     const doAsync = async () => {
       if (photoURL) {
         try {
-          await updateGafettePhotoURL(employee.employeeNumber, photoURL);
+          await updateGafettePhotoURL(employee.employeeNumber,employee.dependency, photoURL);
           setEmployeeState( e => ({...e, gafettePhotoURL: photoURL }))
           setAllGood(true);
         } catch (error) {

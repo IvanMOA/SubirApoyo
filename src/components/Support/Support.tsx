@@ -6,7 +6,7 @@ export const Support = () => {
   const [employee, setEmployeeState] = useRecoilState(EmployeeState);
   const history = useHistory();
   const onSubmitSupport = async () => {
-    await submitSupport(employee.employeeNumber);
+    await submitSupport(employee.employeeNumber, employee.dependency);
     setEmployeeState((e) => ({ ...e, supported: true }));
     history.push("/inicio/gracias");
   };

@@ -45,7 +45,7 @@ export const UploadProfilePhoto = () => {
     const doAsync = async () => {
       if (photoURL) {
         try {
-          await updatePhotoURL(employee.employeeNumber, photoURL);
+          await updatePhotoURL(employee.employeeNumber, employee.dependency, photoURL);
           setEmployeeState( e => ({...e, photoURL }))
           setAllGood(true);
         } catch (error) {
