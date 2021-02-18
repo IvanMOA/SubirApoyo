@@ -4,10 +4,11 @@ import { photosRef } from "../../firebase";
 import { useUploadToStorage } from "../../hooks/useUploadToStorage";
 import { EmployeeState, updatePhotoURL } from "../../store/EmployeeData";
 import { ModalState } from "../Modal/Modal";
+import { Photo } from "../UploadPhotos/Photo";
 import { TakePhotoModalContent } from "./TakePhotoModalContent";
 
 export const UploadProfilePhoto = () => {
-  const [employee] = useRecoilState(EmployeeState);
+  const [employee,setEmployeeState] = useRecoilState(EmployeeState);
   const [{}, setModalIsOn] = useRecoilState(ModalState);
   const [photoTaken, setPhotoTaken] = useState(false);
   const [imgTaken, setImgTaken] = useState(employee.photoURL);
@@ -46,6 +47,7 @@ export const UploadProfilePhoto = () => {
       if (photoURL) {
         try {
           await updatePhotoURL(employee.employeeNumber, photoURL);
+          setEmployeeState( e => ({...e, photoURL }))
           setAllGood(true);
         } catch (error) {
           setAllGood(false);
@@ -73,7 +75,7 @@ export const UploadProfilePhoto = () => {
                 ? "Parece que ya has asociado una imagen, si lo deseas puedes tomar otra y cambiar la ya existente"
                 : ""}
             </h1>
-            <img className="h-32 w-32 mt-4" src={imgTaken} alt="" />
+            <Photo deletePhoto={ () => {}} src={imgTaken} />
           </>
         ) : (
           <div className="h-32 w-32 border-dashed border-2 border-gray-700 flex items-center justify-center mt-2">

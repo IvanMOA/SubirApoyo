@@ -8,7 +8,7 @@ import { ModalState } from "../Modal/Modal";
 import { Photo } from "../UploadPhotos/Photo";
 
 export const UploadGafette = () => {
-  const [employee] = useRecoilState(EmployeeState);
+  const [employee, setEmployeeState] = useRecoilState(EmployeeState);
   const [{}, setModalIsOn] = useRecoilState(ModalState);
   const [photoTaken, setPhotoTaken] = useState(false);
   const [imgTaken, setImgTaken] = useState(employee.gafettePhotoURL);
@@ -28,6 +28,7 @@ export const UploadGafette = () => {
       if (photoURL) {
         try {
           await updateGafettePhotoURL(employee.employeeNumber, photoURL);
+          setEmployeeState( e => ({...e, gafettePhotoURL: imgTaken }))
           setAllGood(true);
         } catch (error) {
           setAllGood(false);
