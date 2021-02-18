@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { LoginEmplDepe } from "../components/LoginEmplDepe/LoginEmplDepe";
 import { UploadDocuments } from "../components/UploadDocuments/UploadDocuments";
 import { PrivateRoute } from "../components/CustomRoutes/PrivateRoute";
+import { Support } from "../components/Support/Support";
+import { Thanks } from "../components/Thanks/Thanks";
 
 export const Home: React.FC = () => {
   return (
@@ -21,6 +23,16 @@ export const Home: React.FC = () => {
               <PrivateRoute
                 path="/inicio/fotos"
                 Component={UploadDocuments}
+                exact={true}
+              />
+              <PrivateRoute
+                path="/inicio/apoyar"
+                Component={Support}
+                exact={true}
+              />
+              <PrivateRoute
+                path="/inicio/gracias"
+                Component={Thanks}
                 exact={true}
               />
             </Switch>

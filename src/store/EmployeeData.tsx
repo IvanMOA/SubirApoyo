@@ -8,11 +8,12 @@ export interface Employee {
   dependency: string;
   photoURL: string;
   gafettePhotoURL: string;
+  supported: boolean
 }
 
 export const EmployeeState = atom<Employee>({
   key: "employee",
-  default: { employeeNumber: "", dependency: "", photoURL: "", gafettePhotoURL: "" },
+  default: { employeeNumber: "", dependency: "", photoURL: "", gafettePhotoURL: "", supported: false },
 });
 
 export const getEmployee =  async ( employeeNumber : string ) => {
@@ -37,13 +38,13 @@ export const loginWithEmployeeCredentials = async (employeeNumber : string, depe
     let emp
     const doc = await  getEmployee(employeeNumber)
     if( !doc.exists ){
-        emp = await createNewEmployee({ dependency, employeeNumber, photoURL: '', gafettePhotoURL: ''})
+        emp = await createNewEmployee({ dependency, employeeNumber, photoURL: '', gafettePhotoURL: '', supported: false})
     }else{
         emp = doc.data() as Employee
     }
     return emp
 }
 
-export const uploadProfilePhoto = (imgData : string) => {
-    
+export const submitSupport = async (employeeNumber : string) => {
+    await employeesCollection.doc(employeeNumber).update({supported: true})
 }

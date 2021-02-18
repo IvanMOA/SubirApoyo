@@ -5,7 +5,10 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
+import { useRecoilState } from "recoil";
+import { EmployeeState } from "../../store/EmployeeData";
 import { UploadGafette } from "./UploadGafette";
 import { UploadProfilePhoto } from "./UploadProfilePhoto";
 
@@ -43,12 +46,14 @@ const TabPanel = ({ children, index, value, onEnter }: TabPanelProps) => {
 
 export const UploadDocuments = () => {
   const [tabValue, setTabValue] = useState(0);
+  const history = useHistory()
   const cardRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState<number>(0);
+  const [ employee ] = useRecoilState(EmployeeState)
   useEffect(() => {
     calcHeight();
     setTimeout(() => {
-      calcHeight() 
+      calcHeight();
     }, 500);
   }, []);
   const calcHeight = () => {
@@ -67,10 +72,16 @@ export const UploadDocuments = () => {
   const firstSelected = tabValue === 0;
   const secondSelected = tabValue === 1;
 
-  const timeout = 100
+  const timeout = 100;
+  
+  const documentsUploadedToStorage = () => {
+    const profileInStorage = employee.photoURL.includes('firebase')
+    const gafetteInStorage = employee.gafettePhotoURL.includes('firebase')
+    return profileInStorage && gafetteInStorage
+  }
 
   return (
-    <div className="mx-4 flex justify-center transition-all">
+    <div className="mx-4 flex justify-center transition-all relative">
       <div
         style={{ height: height || "auto" }}
         ref={cardRef}
@@ -93,9 +104,7 @@ export const UploadDocuments = () => {
             onTabChange={setTabValue}
           />
         </div>
-        <div
-          className="pt-6 flex relative justify-center items-center pb-4"
-        >
+        <div className="pt-6 flex relative justify-center items-center pb-4">
           <CSSTransition
             in={firstSelected}
             timeout={timeout}
@@ -116,6 +125,11 @@ export const UploadDocuments = () => {
           </CSSTransition>
         </div>
       </div>
+      <div className="absolute -bottom-20 flex flex-col justify-items-center items-center">
+        <button disabled={!documentsUploadedToStorage()} onClick={ () => history.push('/inicio/apoyar')} className="border-uanlBlue border-2 rounded-md px-2 py-1">Ir a apoyar</button>
+        <h1 className="text-sm mt-2">Se necesitan subir ambos documentos </h1>
+      </div>
     </div>
   );
 };
+ 
