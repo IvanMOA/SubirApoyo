@@ -27,7 +27,7 @@ export const UploadGafette = () => {
       if (photoURL) {
         try {
           await updateGafettePhotoURL(employee.employeeNumber, photoURL);
-          setEmployeeState( e => ({...e, gafettePhotoURL: imgTaken }))
+          setEmployeeState( e => ({...e, gafettePhotoURL: photoURL }))
           setAllGood(true);
         } catch (error) {
           setAllGood(false);
