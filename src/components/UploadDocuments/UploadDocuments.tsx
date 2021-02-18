@@ -47,6 +47,9 @@ export const UploadDocuments = () => {
   const [height, setHeight] = useState<number>(0);
   useEffect(() => {
     calcHeight();
+    setTimeout(() => {
+      calcHeight() 
+    }, 500);
   }, []);
   const calcHeight = () => {
     if (!cardRef.current) return;
@@ -56,7 +59,7 @@ export const UploadDocuments = () => {
       console.log(el);
       console.log(el.offsetHeight);
 
-      totalH += el.offsetHeight;
+      totalH += el.clientHeight;
     });
     setHeight(totalH);
   };
