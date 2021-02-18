@@ -78,6 +78,7 @@ export const LoginEmplDepe = () => {
               hasError={null}
               inputEl={
                 <input
+                  data-testid="employeeNumberInput"
                   name="employeeNumber"
                   className={InputStyle1}
                   id="login-employeenumber"
@@ -89,12 +90,14 @@ export const LoginEmplDepe = () => {
             />
             <div className="py-4"></div>
             <InputField
-              inputId="login-employeenumber"
+              data-testid="dependencyInputField"
+              inputId="login-dependency"
               label="Dependencia:"
               errorMsg={errors.dependency?.message as string}
               hasError={null}
               inputEl={
                 <input
+                  data-testid="dependencyInput"
                   name="dependency"
                   className={InputStyle1}
                   id="login-dependency"
@@ -106,13 +109,8 @@ export const LoginEmplDepe = () => {
                 ></input>
               }
             />
-            {isSubmitSuccessful === false && isSubmitted === true ? (
-              <p className="mt-4">
-                {" "}
-                - Error al intentar acceder, por favor intentelo de nuevo
-              </p>
-            ) : null}
             <input
+              data-testid="credentialsSubmitButton"
               disabled={isSubmitting}
               className={`${
                 isSubmitting ? "bg-opacity-70" : ""

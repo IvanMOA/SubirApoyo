@@ -18,6 +18,7 @@ export const Start = () => {
           Ingresa para apoyar 
         </h1>
         <Link
+          data-testid="gotoLogin"
           to="/inicio/credenciales"
           className="bg-uanlYellow text-2xl xl:text-3xl text-center rounded-2xl px-16 py-4"
         >

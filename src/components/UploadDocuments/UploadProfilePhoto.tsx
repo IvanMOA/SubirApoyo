@@ -61,12 +61,13 @@ export const UploadProfilePhoto = () => {
     <div className="flex flex-col justify-center items-center">
       <h1 className="text-xl text-gray-700">Toma de fotografía</h1>
       <button
+        data-testid="openModalToTakePhoto"
         onClick={openTakePhotoModal}
         className="bg-uanlYellow text-white rounded-md px-4 py-2 mt-2"
       >
         Tomar fotografía
       </button>
-      <div className="flex justify-center flex-col items-center">
+      <div data-testid='profilePhotoContainer' className="flex justify-center flex-col items-center">
         {imgTaken !== "" ? (
           <>
             <h1 className="max-w-sm mx-4 my-2 text-center pl-4 border-l-2 border-uanlBlue">

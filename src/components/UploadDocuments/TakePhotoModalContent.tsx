@@ -26,7 +26,7 @@ export const TakePhotoModalContent = ({
         className="bg-uanlYellow w-72 h-72  md:w-96 md:h-96"
         ref={videoRef}
       ></video>
-      <div onClick={
+      <div data-testid="takePhotoBtn" onClick={
        () => {
            if(!canvasRef.current || !videoRef.current) return
             const canvas = canvasRef.current
