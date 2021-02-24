@@ -29,3 +29,4 @@ ui-debug.log
 .gitignore
 firestore-debug.log
 firebase-debug.log
+src/style/main.css

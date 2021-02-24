@@ -9,6 +9,9 @@ import {
 } from "react-router-dom";
 import { Start } from "./Pages/Start";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { Testing } from "./components/Testing";
+import { Provider } from 'react-redux'
+import store from "./store/store";
 
 const MainAnimatedSwitch = withRouter(({ location }) => {
   return (
@@ -21,6 +24,7 @@ const MainAnimatedSwitch = withRouter(({ location }) => {
         <Switch location={location}>
           <Route exact path="/" render={() => <Start />} />
           <Route path="/inicio" render={() => <Home />} />
+          <Route path="/testing" render={() => <Testing />} />
         </Switch>
       </CSSTransition>
     </TransitionGroup>
@@ -29,12 +33,14 @@ const MainAnimatedSwitch = withRouter(({ location }) => {
 
 const App: React.FC = () => {
   return (
+<Provider store={  store }>
     <div>
       <Modal />
       <Router>
         <MainAnimatedSwitch />
       </Router>
     </div>
+</Provider>
   );
 };
 

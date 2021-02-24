@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 type TakePhotoModalContentProps = {
   videoStream?: MediaStream;
-  takePhoto: Function
+  takePhoto: ( arg : any) => void
 };
 
 export const TakePhotoModalContent = ({
