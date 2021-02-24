@@ -25,3 +25,7 @@ yarn-error.log*
 src/style/main.css
 src/style/main.css
 .env
+ui-debug.log
+.gitignore
+firestore-debug.log
+firebase-debug.log

@@ -1,5 +1,6 @@
 import { Reference } from "@firebase/storage-types";
 import firebase from "firebase";
+import 'firebase/storage'
 import { Ref } from "react";
 
 let firebaseConfig = {
@@ -15,6 +16,9 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 export const auth = firebaseApp.auth();
 export const firestore = firebaseApp.firestore();
+if(process.env.NODE_ENV === 'development'){
+  firestore.useEmulator('localhost', 8080)
+}
 export const storage = firebaseApp.storage();
 
 export const photosRef = storage.ref('photos') as unknown as Reference
